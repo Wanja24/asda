@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>regression builder</title>
+    <script type="module" crossorigin src="./assets/index-BI2D29sc.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-BW0IMuFq.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-uKX61F1_.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLUna9fQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Cl9k9ZmS.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-DzliDDTm.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-C8wT63Va.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-BGESiCQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CrRUCOBw.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-D0MtrJOx.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-C1rgT0yh.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-BGmjiNul.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-DeeZ7FnK.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-DN_bIXfG.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DAnNhy3O.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-COkmyg1v.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-B8cGZzP5.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-C9fstfnp.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-D1TsGrBC.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-9PZrU2e0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CBrDuocE.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-CW2xpJ57.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-CrAQug3q.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-D9lTzMzP.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CvjcEpZC.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-Bzf3rpev.js">
+    <link rel="modulepreload" crossorigin href="./assets/_getTag-BWqNuuwU.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-Cz9Tt_-E.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-DlWF5OMa.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-C6yE60hi.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-Duhs3RiJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BBX6ug-N.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-Cg4WLWh2.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-Czt8B2GX.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-Bkp4R3bQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DzyBMRsy.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CENq_7Pd.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-ClFZlR7U.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-B3BENoUa.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-C0HaHO6a.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BGkTcW3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-DlRqgfqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-zBEpxwYe.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-CmDXEyIC.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-EAuSVK-5.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-BSVRc0kJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-CTiSlR1m.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-BmAOeMOK.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-DDa-hVe3.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CAcX026F.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DKNOF5xd.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CI6_zMIl.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BVf1IY4_.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Cq_4nPfh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CVj-_Iiz.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-HGZzCB0y.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-RKnr9SNh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BuhT82Xx.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-0ac7Aukl.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-5JckKRQn.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-Bj40p_Np.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-bZBYsK-u.js">
+    <link rel="modulepreload" crossorigin href="./assets/type-BdyvjzTI.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-DuoFhI7N.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-6sUe0ZdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-BbFlGgjv.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-CDcO32Gx.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-CaVvnK_o.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-CwSdzVhm.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-CmJW_FeD.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-C7JBxSzd.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-Czc5z_04.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-RldLPyJs.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-jcHA5geR.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-CF5DtF1E.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-em3gna-v.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-C9_R_vlY.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-DD7JA3RM.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BAYdLMF_.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-D8ks3oPN.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-C2LPFxyv.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-Bkl2Yfmh.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-BZvZlZQZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-D7bPw7Fz.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-CQd4MZr5.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-BEdExd6A.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-CqEd11Di.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-BP4_BZLr.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-DNmjkr65.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-CCq9qyVG.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-B8vBQnkH.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-DAK6volb.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DRhpWiOq.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-gBVL4NN-.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-jWsqdLn1.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-C1czjtp7.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BJsT6vfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-KGgBDCvb.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-Dr2G5gxJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-dFZM4X_7.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-BZNXs5FA.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-OGVTOU66-DQphfHw1.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DjqhqmES.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-D0NgYwYf.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-B1zRJT1a.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-DtnzNVk-.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-DNnhJ0Gs.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-CXc0VeQq.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-N-2faAGj.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-B4Nb8r0D.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BatLo2vd.js">
+    <link rel="modulepreload" crossorigin href="./assets/tabs-CHiEPtZV.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-Dj1oqsrZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-CU-WWxnz.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-z7WpYca5.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-Cq4Yn1WZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-DtJ_484s.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-DhMN8sxe.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-DhzaK-Y1.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CdsE1R40.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-C_slsU-7.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-s2pQkyf5.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-B9D0JO9U.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-lG8j6oqk.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CV0QXb5P.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-sshwVRcP.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-DQeWKRGx.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-BLx7B_us.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-DlwRx3jE.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-BnFXtaZZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/play-BJDBXApx.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-components-BQ_d4LQG.js">
+    <link rel="modulepreload" crossorigin href="./assets/isEmpty-DIxUV1UR.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-check-big-OIMTUpe6.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-display-ZS_L6G-P.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-C-5PlP5A.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BzTDKVab.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-D-55qWAK.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-9QU2Dup7.js">
+    <link rel="modulepreload" crossorigin href="./assets/process-output-DN66BQYe.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-DtJQFQyD.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-CboCOq4o.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-D2_Kx6xF.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-DEdol3w0.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-D42sFB6d.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-DxXFdbn8.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-qp_XZeSS.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-DZ--KOk1.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-C5jvDmuG.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-D-5M3JI_.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-DPW2B3A9.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-CXQVxivL.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-DN0TMY36.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-CyLJYAfP.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-6FYvpjrm.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-B7ZqbY8M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-CqQATX3k.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-DqdzWKrn.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-DveVmvs9.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-D9zAYqG9.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-CHesBJpY.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-Dr5fAkba.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-CZUg-nFA.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-D5CL190S.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-CqyOmxjL.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-DzIuH-E_.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-DbW1_PHb.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-C-lF7BNB.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-DyJ8-Zz6.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-86WoveRM.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-GvygmcM1.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-81gQouTn.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-B42u_5hF.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-C638SUfx.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-FiXEquL2.js">
+    <link rel="modulepreload" crossorigin href="./assets/VisuallyHidden-B0mBEsSm.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-DydgU7lx.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-CLPh0yMf.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-Buk63LQO.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-DeQioq0G.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-MBUyxNtK.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-DobaYJPt.js">
+    <link rel="modulepreload" crossorigin href="./assets/house-CncUa_LL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Din9uFKE.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-MTlHVxz3.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-leQTJTJJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CbD0f2J6.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-dxSncdJD.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-BI9O54ok.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">%23%20%2F%2F%2F%20script%0A%23%20requires-python%20%3D%20%22%3E%3D3.13%22%0A%23%20dependencies%20%3D%20%5B%0A%23%20%20%20%20%20%22marimo%3E%3D0.19.6%22%2C%0A%23%20%20%20%20%20%22matplotlib%3D%3D3.10.8%22%2C%0A%23%20%20%20%20%20%22numpy%3D%3D2.4.1%22%2C%0A%23%20%20%20%20%20%22pandas%3D%3D3.0.0%22%2C%0A%23%20%20%20%20%20%22scikit-learn%3D%3D1.8.0%22%2C%0A%23%20%20%20%20%20%22seaborn%3D%3D0.13.2%22%2C%0A%23%20%20%20%20%20%22statsmodels%3D%3D0.14.6%22%2C%0A%23%20%5D%0A%23%20%2F%2F%2F%0A%0Aimport%20marimo%0A%0A__generated_with%20%3D%20%220.19.6%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Regression%20builder%0A%0A%20%20%20%20Here%20you%20can%20do%20your%20own%20regression%20analysis%20on%20any%20dataset%20you%20have.%20Follow%20these%20steps.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20**Linear%20regression%20steps%3A**%0A%20%20%20%201.%20Import%20the%20data%0A%20%20%20%202.%20Clean%20the%20data%0A%20%20%20%203.%20Select%20variables%0A%20%20%20%204.%20Split%20the%20data%0A%20%20%20%205.%20Check%20assumptions%3A%20normal%20distribution%20of%20dependent%20variable%3F%20--%3E%20if%20not%20transform%0A%20%20%20%206.%20Check%20assumptions%3A%20multicollinearity%20(%3D%20redundancies%20among%20predictors)%3F%0A%20%20%20%20--%3E%20throw%20out%20redundant%20variables%0A%20%20%20%207.%20Preprocess%20the%20data%3A%20scale%20the%20predictors%0A%20%20%20%208.%20Train%20linear%20regression%20on%20training%20set%0A%20%20%20%209.%20Predict%20on%20test%20set%20and%20evaluate%20with%20metrics%20(e.g.%20MAE%2C%20RMSE%2C%20MAPE%2C%20R2)%0A%20%20%20%2010.%20Diagnostic%20plots%0A%20%20%20%20-%20scatterplot%20with%20regression%20line%0A%20%20%20%20-%20actual%20vs.%20predicted%20values%0A%20%20%20%20-%20histogram%20of%20residuals%20--%3E%20normal%20distribution%3F%20if%20not%2C%20investigate%20why%20not%3F%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Import%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20file_upload%20%3D%20mo.ui.file(%0A%20%20%20%20%20%20%20%20filetypes%3D%5B%22.csv%22%2C%20%22.txt%22%2C%20%22.xls%22%2C%20%22.xlsx%22%2C%20%22.data%22%5D%2C%0A%20%20%20%20%20%20%20%20label%3D%22Upload%20your%20data%20file%22%0A%20%20%20%20)%0A%20%20%20%20file_upload%0A%20%20%20%20return%20(file_upload%2C)%0A%0A%0A%40app.cell%0Adef%20_(file_upload)%3A%0A%20%20%20%20file_upload.value%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20%23%20---%20Separator%20selection%20---%0A%20%20%20%20sep_input%20%3D%20mo.ui.text(%0A%20%20%20%20%20%20%20%20label%3D%22Specify%20separator%20for%20CSV%2FTXT%20files%20(default%20is%20comma%20%2C)%22%2C%0A%20%20%20%20%20%20%20%20value%3D%22%2C%22%0A%20%20%20%20)%0A%20%20%20%20sep_input%20%20%23%20show%20the%20input%20widget%0A%20%20%20%20return%20(sep_input%2C)%0A%0A%0A%40app.cell%0Adef%20_(BytesIO%2C%20Path%2C%20StringIO%2C%20file_upload%2C%20pd%2C%20sep_input)%3A%0A%20%20%20%20%23%20---%20File%20upload%20---%0A%20%20%20%20df%20%3D%20None%0A%0A%20%20%20%20if%20file_upload.value%20is%20not%20None%3A%0A%20%20%20%20%20%20%20%20filename%20%3D%20file_upload.name()%0A%20%20%20%20%20%20%20%20suffix%20%3D%20Path(filename).suffix.lower()%0A%20%20%20%20%20%20%20%20data%20%3D%20file_upload.contents()%0A%0A%20%20%20%20%20%20%20%20%23%20CSV%0A%20%20%20%20%20%20%20%20if%20suffix%20in%20%5B%22.csv%22%2C%20%22.data%22%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20df%20%3D%20pd.read_csv(BytesIO(data)%2C%20sep%3Dsep_input.value%2C%20header%3DNone%2C%20%20%23%20file%20has%20no%20header%20row%0A%20%20%20%20%20%20%20%20%20%20%20%20names%3D%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22sepal%20length%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22sepal%20width%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22petal%20length%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22petal%20width%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22class%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5D)%0A%0A%20%20%20%20%20%20%20%20%23%20TXT%0A%20%20%20%20%20%20%20%20elif%20suffix%20%3D%3D%20%22.txt%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20df%20%3D%20pd.read_csv(StringIO(data.decode(%22utf-8%22))%2C%20sep%3Dsep_input.value)%0A%0A%20%20%20%20%20%20%20%20%23%20Excel%0A%20%20%20%20%20%20%20%20elif%20suffix%20in%20%5B%22.xls%22%2C%20%22.xlsx%22%5D%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20df%20%3D%20pd.read_excel(BytesIO(data))%0A%0A%20%20%20%20%23%20Return%20dataframe%20for%20display%0A%20%20%20%20df%0A%20%20%20%20return%20(df%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Clean%20the%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Select%20variables%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(df)%3A%0A%20%20%20%20df_num%20%3D%20df.select_dtypes(include%3D%22number%22)%0A%20%20%20%20numeric_columns%20%3D%20df_num.columns.tolist()%0A%20%20%20%20return%20(numeric_columns%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20numeric_columns)%3A%0A%20%20%20%20y_selector%20%3D%20mo.ui.dropdown(%0A%20%20%20%20%20%20%20%20options%3Dnumeric_columns%2C%0A%20%20%20%20%20%20%20%20label%3D%22Dependent%20variable%20(y)%22%2C%0A%20%20%20%20)%0A%20%20%20%20y_selector%0A%20%20%20%20return%20(y_selector%2C)%0A%0A%0A%40app.cell%0Adef%20_(mo%2C%20numeric_columns)%3A%0A%20%20%20%20X_selector%20%3D%20mo.ui.multiselect(%0A%20%20%20%20%20%20%20%20options%3Dnumeric_columns%2C%0A%20%20%20%20%20%20%20%20label%3D%22Predictor%20variables%20(X)%22%2C%0A%20%20%20%20)%0A%20%20%20%20X_selector%0A%20%20%20%20return%20(X_selector%2C)%0A%0A%0A%40app.cell%0Adef%20_(X_selector%2C%20df%2C%20pd%2C%20y_selector)%3A%0A%20%20%20%20%23%20Get%20selected%20column%20names%0A%20%20%20%20y_col%20%3D%20y_selector.value%0A%20%20%20%20X_cols%20%3D%20X_selector.value%20or%20%5B%5D%0A%0A%20%20%20%20%23%20Make%20sure%20y%20is%20not%20in%20X%0A%20%20%20%20if%20y_col%20in%20X_cols%3A%0A%20%20%20%20%20%20%20%20X_cols%20%3D%20%5Bcol%20for%20col%20in%20X_cols%20if%20col%20!%3D%20y_col%5D%0A%0A%20%20%20%20%23%20Extract%20actual%20data%20from%20df%0A%20%20%20%20if%20df%20is%20not%20None%20and%20y_col%20and%20X_cols%3A%0A%20%20%20%20%20%20%20%20y%20%3D%20df%5By_col%5D%0A%20%20%20%20%20%20%20%20X%20%3D%20df%5BX_cols%5D%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20y%20%3D%20None%0A%20%20%20%20%20%20%20%20X%20%3D%20pd.DataFrame()%20%20%23%20empty%20dataframe%20if%20nothing%20selected%0A%20%20%20%20return%20X%2C%20X_cols%2C%20y%2C%20y_col%0A%0A%0A%40app.cell%0Adef%20_(X%2C%20X_cols%2C%20df%2C%20mo%2C%20y%2C%20y_col)%3A%0A%20%20%20%20if%20df%20is%20None%3A%0A%20%20%20%20%20%20%20%20mo.callout(%22Please%20upload%20a%20data%20file%20first.%22%2C%20kind%3D%22warning%22)%0A%20%20%20%20elif%20not%20y_col%3A%0A%20%20%20%20%20%20%20%20mo.callout(%22Please%20select%20a%20dependent%20variable.%22%2C%20kind%3D%22info%22)%0A%20%20%20%20elif%20not%20X_cols%3A%0A%20%20%20%20%20%20%20%20mo.callout(%22Please%20select%20at%20least%20one%20predictor%20variable.%22%2C%20kind%3D%22info%22)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20mo.callout(%0A%20%20%20%20%20%20%20%20%20%20%20%20f%22Ready%20to%20run%20regression%20with%20y%20%3D%20**%7By%7D**%20and%20X%20%3D%20**%7B'%2C%20'.join(X)%7D**%22%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20kind%3D%22success%22%2C%0A%20%20%20%20%20%20%20%20)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23X%20%3D%20df.drop(columns%3D%5B'Weight'%2C%20'Log_Weight'%2C%20'Root_Weight'%2C%20'Species'%5D)%0A%20%20%20%20%23y%20%3D%20df%5B%5B'Root_Weight'%5D%5D%0A%20%20%20%20%23print(X.columns)%0A%20%20%20%20%23print(y.columns)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(X%2C%20train_test_split%2C%20y)%3A%0A%20%20%20%20%23%20Split%20data%0A%20%20%20%20X_train%2C%20X_test%2C%20y_train%2C%20y_test%20%3D%20train_test_split(X%2C%20y%2C%20test_size%3D0.2%2C%20random_state%3D42)%0A%20%20%20%20return%20X_test%2C%20X_train%2C%20y_test%2C%20y_train%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Check%20distributions%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(X_train%2C%20math%2C%20plt%2C%20sns)%3A%0A%20%20%20%20%23%20initiating%20grid%20for%20histograms%0A%20%20%20%20h_cols%20%3D%203%20%23%20number%20of%20columns%0A%20%20%20%20h_rows%20%3D%20math.ceil(len(X_train.columns)%20%2F%20h_cols)%20%23%20number%20of%20rows%0A%0A%20%20%20%20%23%20create%20a%20grid%20of%20subplots%0A%20%20%20%20fig%2C%20axes%20%3D%20plt.subplots(h_rows%2C%20h_cols%2C%20figsize%20%3D%20(10%2C%203%20*%20h_rows))%0A%0A%20%20%20%20%23%20flatten%20axes%20arry%20for%20easy%20iteration%0A%20%20%20%20axes%20%3D%20axes.flatten()%0A%0A%20%20%20%20%23%20iteratoe%20through%20numeric%20columns%20and%20create%20histogram%0A%20%20%20%20for%20i%2C%20col%20in%20enumerate(X_train.columns)%3A%0A%20%20%20%20%20%20%20%20sns.histplot(data%20%3D%20X_train%2C%20x%20%3D%20col%2C%20kde%20%3D%20False%2C%20bins%20%3D%2020%2C%20ax%20%3D%20axes%5Bi%5D)%0A%0A%20%20%20%20%20%20%20%20axes%5Bi%5D.set_xlabel(col)%0A%20%20%20%20%20%20%20%20axes%5Bi%5D.set_ylabel('Frequency')%0A%0A%20%20%20%20%23%20Turn%20off%20empty%20subplots%20if%20the%20number%20of%20plots%20is%20less%20than%20n_rows%20*%20n_cols%0A%20%20%20%20for%20j%20in%20range(i%20%2B%201%2C%20len(axes))%3A%0A%20%20%20%20%20%20%20%20axes%5Bj%5D.set_visible(False)%0A%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20fig%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20transform%20%3D%20mo.ui.dropdown(options%3D%5B%22none%22%2C%20%22log%22%2C%20%22square%20root%22%5D%2C%20value%3D%22none%22%2C%20label%3D%22Choose%20a%20transformation%22%0A%20%20%20%20)%0A%20%20%20%20transform%0A%20%20%20%20return%20(transform%2C)%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20plt%2C%20sns%2C%20transform%2C%20y_test%2C%20y_train)%3A%0A%20%20%20%20%23%20Transform%20y%0A%20%20%20%20if%20transform.value%20%3D%3D%20%22log%22%3A%0A%20%20%20%20%20%20%20%20y_train_transformed%20%3D%20np.log(y_train%20%2B%201)%0A%20%20%20%20%20%20%20%20y_test_transformed%20%3D%20np.log(y_test%20%2B%201)%0A%20%20%20%20elif%20transform.value%20%3D%3D%20%22square%20root%22%3A%0A%20%20%20%20%20%20%20%20y_train_transformed%20%3D%20np.sqrt(y_train)%0A%20%20%20%20%20%20%20%20y_test_transformed%20%3D%20np.sqrt(y_test)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20y_train_transformed%20%3D%20y_train%0A%20%20%20%20%20%20%20%20y_test_transformed%20%3D%20y_test%0A%0A%20%20%20%20%23%20Plot%0A%20%20%20%20plt.figure(figsize%3D(6%2C4))%0A%20%20%20%20distr%20%3D%20sns.histplot(data%3Dy_train_transformed%2C%20kde%3DFalse%2C%20bins%3D20)%0A%0A%20%20%20%20%23%20Fix%20x-axis%20label%0A%20%20%20%20distr.set(%0A%20%20%20%20%20%20%20%20xlabel%3Df%22Weight%20(%7Btransform.value%7D)%22%2C%0A%20%20%20%20%20%20%20%20ylabel%3D%22Count%22%2C%0A%20%20%20%20%20%20%20%20title%3D%22Distribution%20of%20Transformed%20y%20(Training%20Set)%22%0A%20%20%20%20)%0A%20%20%20%20distr%0A%20%20%20%20return%20y_test_transformed%2C%20y_train_transformed%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Check%20redundancies%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(X_train%2C%20pd%2C%20variance_inflation_factor)%3A%0A%20%20%20%20%23%20Assume%20X%20is%20the%20DataFrame%20of%20explanatory%20variables%0A%20%20%20%20_vif_data%20%3D%20pd.DataFrame()%0A%20%20%20%20_vif_data%5B'Variable'%5D%20%3D%20X_train.columns%0A%20%20%20%20_vif_data%5B'VIF'%5D%20%3D%20%5Bvariance_inflation_factor(X_train.values%2C%20i).round(2)%20for%20i%20in%20range(X_train.shape%5B1%5D)%5D%0A%20%20%20%20_vif_data%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Scale%20predictors%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(StandardScaler%2C%20X_test%2C%20X_train%2C%20mo%2C%20pd)%3A%0A%20%20%20%20%23%20Initialize%20scaler%0A%20%20%20%20scaler%20%3D%20StandardScaler()%0A%0A%20%20%20%20%23%20Fit%20on%20training%20data%0A%20%20%20%20X_train_scaled%20%3D%20scaler.fit_transform(X_train)%0A%0A%20%20%20%20%23%20Transform%20test%20data%0A%20%20%20%20X_test_scaled%20%3D%20scaler.transform(X_test)%0A%0A%20%20%20%20X_train_scaled%20%3D%20pd.DataFrame(X_train_scaled%2C%20columns%3DX_train.columns%2C%20index%3DX_train.index)%0A%0A%20%20%20%20X_test_scaled%20%3D%20pd.DataFrame(X_test_scaled%2C%20columns%3DX_test.columns%2C%20index%3DX_test.index)%0A%0A%20%20%20%20%23%20---%20User%20message%20---%0A%20%20%20%20mo.callout(%22Predictors%20have%20been%20scaled%20using%20StandardScaler.%22%2C%20kind%3D%22success%22)%0A%20%20%20%20return%20X_test_scaled%2C%20X_train_scaled%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20%23%20Regression%20including%20Species%20as%20dummy%20variables%0A%0A%20%20%20%20%23X%20%3D%20df.drop(columns%3D%5B'Weight'%2C%20'Log_Weight'%2C%20'Root_Weight'%5D)%0A%20%20%20%20%23X%20%3D%20pd.get_dummies(X%2C%20columns%3D%5B'Species'%5D%2C%20drop_first%3DTrue)%0A%20%20%20%20%23X%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Train%20linear%20regression%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20LinearRegression%2C%0A%20%20%20%20X_test_scaled%2C%0A%20%20%20%20X_train_scaled%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20pd%2C%0A%20%20%20%20y_train_transformed%2C%0A)%3A%0A%20%20%20%20%23%20Create%20linear%20regression%20object%0A%20%20%20%20regr%20%3D%20LinearRegression()%0A%0A%20%20%20%20%23%20Train%20the%20model%20using%20the%20training%20sets%0A%20%20%20%20regr.fit(X_train_scaled%2C%20y_train_transformed)%0A%0A%20%20%20%20%23%20Make%20predictions%20using%20the%20testing%20set%0A%20%20%20%20y_pred%20%3D%20regr.predict(X_test_scaled)%0A%0A%20%20%20%20%23%20Display%20coefficients%20as%20a%20table%0A%20%20%20%20coef_df%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%22Predictor%22%3A%20X_train_scaled.columns%2C%0A%20%20%20%20%20%20%20%20%22Coefficient%22%3A%20regr.coef_.ravel().round(2)%0A%20%20%20%20%7D)%0A%0A%20%20%20%20%23%20Marimo%20callout%20for%20user%20info%0A%20%20%20%20mo.callout(%22Linear%20regression%20model%20trained%20successfully.%20Here%20are%20the%20coefficients%3A%22%2C%20kind%3D%22success%22)%0A%20%20%20%20return%20coef_df%2C%20y_pred%0A%0A%0A%40app.cell%0Adef%20_(coef_df)%3A%0A%20%20%20%20%23%20Display%20coefficients%20table%0A%20%20%20%20coef_df%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Evaluate%20linear%20regression%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(%0A%20%20%20%20mean_absolute_error%2C%0A%20%20%20%20mean_absolute_percentage_error%2C%0A%20%20%20%20r2_score%2C%0A%20%20%20%20root_mean_squared_error%2C%0A%20%20%20%20y_pred%2C%0A%20%20%20%20y_test_transformed%2C%0A)%3A%0A%20%20%20%20%23%20Mean%20Absolute%20Error%0A%20%20%20%20mae%20%3D%20mean_absolute_error(y_true%20%3D%20y_test_transformed%2C%20y_pred%20%3D%20y_pred)%20%0A%0A%20%20%20%20%23%20Mean%20Squared%20Error%0A%20%20%20%20rmse%20%3D%20root_mean_squared_error(y_true%20%3D%20y_test_transformed%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20y_pred%20%3D%20y_pred)%20%0A%0A%20%20%20%20%23%20Mean%20Absolute%20Error%20%25%0A%20%20%20%20dumb_mape%20%3D%20mean_absolute_percentage_error(y_true%20%3D%20y_test_transformed%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20y_pred%20%3D%20y_pred)%20%0A%0A%20%20%20%20%23%20Rsquared%0A%20%20%20%20r2%20%3D%20r2_score(y_true%20%3D%20y_test_transformed%2C%20y_pred%20%3D%20y_pred)%0A%20%20%20%20return%20dumb_mape%2C%20mae%2C%20r2%2C%20rmse%0A%0A%0A%40app.cell%0Adef%20_(X_cols%2C%20dumb_mape%2C%20mae%2C%20pd%2C%20r2%2C%20rmse%2C%20y_col)%3A%0A%20%20%20%20%23%20Create%20a%20DataFrame%20for%20the%20table%0A%20%20%20%20metrics_table%20%3D%20pd.DataFrame(%7B%0A%20%20%20%20%20%20%20%20%22Metric%22%3A%20%5B%22Mean%20Absolute%20Error%20(MAE)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Root%20Mean%20Squared%20Error%20(RMSE)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22Mean%20Absolute%20Percentage%20Error%20(MAPE)%22%2C%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%22R-squared%20(R%C2%B2)%22%5D%2C%0A%20%20%20%20%20%20%20%20f%22%7By_col%7D%20~%20%7BX_cols%7D%22%3A%20%5Bmae%2C%20rmse%2C%20dumb_mape%2C%20r2%5D%2C%0A%20%20%20%20%7D)%0A%0A%20%20%20%20%23%20Display%20the%20table%0A%20%20%20%20metrics_table%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Plots%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(X_test_scaled%2C%20math%2C%20plt%2C%20sns%2C%20y_col%2C%20y_pred%2C%20y_test_transformed)%3A%0A%20%20%20%20n_cols%20%3D%203%0A%20%20%20%20n_rows%20%3D%20math.ceil(len(X_test_scaled.columns)%20%2F%20n_cols)%0A%0A%20%20%20%20fig2%2C%20_axes%20%3D%20plt.subplots(n_rows%2C%20n_cols%2C%20figsize%3D(5*n_cols%2C%204*n_rows))%0A%20%20%20%20_axes%20%3D%20_axes.flatten()%0A%0A%20%20%20%20y_test_series%20%3D%20y_test_transformed.squeeze()%0A%20%20%20%20y_pred_series%20%3D%20y_pred.ravel()%0A%0A%20%20%20%20for%20_i%2C%20predictor%20in%20enumerate(X_test_scaled.columns)%3A%0A%20%20%20%20%20%20%20%20ax%20%3D%20_axes%5B_i%5D%0A%20%20%20%20%20%20%20%20sns.scatterplot(x%3DX_test_scaled%5Bpredictor%5D%2C%20y%3Dy_test_series%2C%20color%3D%22black%22%2C%20label%3D%22Actual%20Data%22%2C%20ax%3Dax)%0A%20%20%20%20%20%20%20%20sns.lineplot(x%3DX_test_scaled%5Bpredictor%5D%2C%20y%3Dy_pred_series%2C%20color%3D%22blue%22%2C%20label%3D%22Regression%20Line%22%2C%20ax%3Dax)%0A%20%20%20%20%20%20%20%20ax.set_xlabel(f%22%7Bpredictor%7D%20(Scaled)%22)%0A%20%20%20%20%20%20%20%20ax.set_ylabel(f%22%7By_col%7D%20(Transformed)%22)%0A%20%20%20%20%20%20%20%20ax.set_title(f%22%7Bpredictor%7D%20vs.%20%7By_col%7D%22)%0A%20%20%20%20%20%20%20%20ax.legend()%0A%0A%20%20%20%20%23%20Turn%20off%20unused%20subplots%0A%20%20%20%20for%20_j%20in%20range(_i%2B1%2C%20len(_axes))%3A%0A%20%20%20%20%20%20%20%20_axes%5B_j%5D.set_visible(False)%0A%0A%20%20%20%20plt.tight_layout()%0A%20%20%20%20fig2%20%20%23%20Return%20a%20single%20figure%20%E2%80%94%20Marimo%20renders%20this%20cleanly%0A%20%20%20%20return%20y_pred_series%2C%20y_test_series%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20sns%2C%20y_pred_series%2C%20y_test_series)%3A%0A%20%20%20%20%23%20Create%20figure%20and%20axes%0A%20%20%20%20fig3%2C%20ax3%20%3D%20plt.subplots(figsize%3D(8%2C%206))%0A%0A%20%20%20%20%23%20Scatter%20plot%20of%20actual%20vs%20predicted%0A%20%20%20%20sns.scatterplot(%0A%20%20%20%20%20%20%20%20x%3Dy_test_series%2C%0A%20%20%20%20%20%20%20%20y%3Dy_pred_series%2C%0A%20%20%20%20%20%20%20%20color%3D%22blue%22%2C%0A%20%20%20%20%20%20%20%20label%3D%22Predicted%20vs%20Actual%22%2C%0A%20%20%20%20%20%20%20%20ax%3Dax3%0A%20%20%20%20)%0A%0A%20%20%20%20%23%20Diagonal%20line%20for%20ideal%20fit%0A%20%20%20%20min_val%20%3D%20min(y_test_series.min()%2C%20y_pred_series.min())%0A%20%20%20%20max_val%20%3D%20max(y_test_series.max()%2C%20y_pred_series.max())%0A%20%20%20%20ax3.plot(%5Bmin_val%2C%20max_val%5D%2C%20%5Bmin_val%2C%20max_val%5D%2C%20color%3D%22red%22%2C%20linestyle%3D%22--%22%2C%20label%3D%22Ideal%20Fit%22)%0A%0A%20%20%20%20%23%20Labels%20and%20title%0A%20%20%20%20ax3.set_xlabel(%22Actual%20Values%22)%0A%20%20%20%20ax3.set_ylabel(%22Predicted%20Values%22)%0A%20%20%20%20ax3.set_title(%22Actual%20vs%20Predicted%20Values%22)%0A%20%20%20%20ax3.legend()%0A%0A%20%20%20%20%23%20Marimo-friendly%20display%0A%20%20%20%20fig3%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(plt%2C%20sns%2C%20y_pred%2C%20y_test_transformed)%3A%0A%20%20%20%20%23%20Calculate%20residuals%0A%20%20%20%20residuals_series%20%3D%20y_test_transformed.squeeze()%20-%20y_pred.ravel()%20%20%23%20transformed%20y%20if%20used%0A%0A%20%20%20%20%23%20Create%20figure%20and%20axes%20(new%20variable%20names)%0A%20%20%20%20fig_resid%2C%20ax_resid%20%3D%20plt.subplots(figsize%3D(8%2C%206))%0A%0A%20%20%20%20%23%20Plot%20histogram%20of%20residuals%0A%20%20%20%20sns.histplot(residuals_series%2C%20bins%3D20%2C%20ax%3Dax_resid)%0A%0A%20%20%20%20%23%20Labels%20and%20title%0A%20%20%20%20ax_resid.set_xlabel(%22Residuals%22)%0A%20%20%20%20ax_resid.set_ylabel(%22Frequency%22)%0A%20%20%20%20ax_resid.set_title(%22Histogram%20of%20Residuals%22)%0A%0A%20%20%20%20%23%20Marimo-friendly%20display%0A%20%20%20%20fig_resid%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20from%20io%20import%20BytesIO%2C%20StringIO%0A%20%20%20%20from%20pathlib%20import%20Path%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20math%0A%20%20%20%20import%20seaborn%20as%20sns%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20from%20statsmodels.stats.outliers_influence%20import%20variance_inflation_factor%0A%20%20%20%20from%20sklearn.model_selection%20import%20train_test_split%0A%20%20%20%20from%20sklearn.metrics%20import%20mean_absolute_error%0A%20%20%20%20from%20sklearn.metrics%20import%20root_mean_squared_error%0A%20%20%20%20from%20sklearn.metrics%20import%20mean_absolute_percentage_error%0A%20%20%20%20from%20sklearn.metrics%20import%20r2_score%0A%20%20%20%20from%20sklearn.linear_model%20import%20LinearRegression%0A%20%20%20%20from%20sklearn.pipeline%20import%20Pipeline%0A%20%20%20%20from%20sklearn.preprocessing%20import%20StandardScaler%0A%20%20%20%20from%20sklearn.preprocessing%20import%20OneHotEncoder%0A%20%20%20%20import%20statsmodels.formula.api%20as%20smf%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20BytesIO%2C%0A%20%20%20%20%20%20%20%20LinearRegression%2C%0A%20%20%20%20%20%20%20%20Path%2C%0A%20%20%20%20%20%20%20%20StandardScaler%2C%0A%20%20%20%20%20%20%20%20StringIO%2C%0A%20%20%20%20%20%20%20%20math%2C%0A%20%20%20%20%20%20%20%20mean_absolute_error%2C%0A%20%20%20%20%20%20%20%20mean_absolute_percentage_error%2C%0A%20%20%20%20%20%20%20%20mo%2C%0A%20%20%20%20%20%20%20%20np%2C%0A%20%20%20%20%20%20%20%20pd%2C%0A%20%20%20%20%20%20%20%20plt%2C%0A%20%20%20%20%20%20%20%20r2_score%2C%0A%20%20%20%20%20%20%20%20root_mean_squared_error%2C%0A%20%20%20%20%20%20%20%20sns%2C%0A%20%20%20%20%20%20%20%20train_test_split%2C%0A%20%20%20%20%20%20%20%20variance_inflation_factor%2C%0A%20%20%20%20)%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.19.6",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "uv"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
